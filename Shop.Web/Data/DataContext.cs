@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Shop.Web.Data.Entities;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
 
 namespace Shop.Web.Data
 {
-    public class DataContext : IdentityDbContext<User>
-
+    public class DataContext : DbContext
     {
         public DbSet<Product> Products { get; set; }
 
