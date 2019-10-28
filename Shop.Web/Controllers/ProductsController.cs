@@ -12,7 +12,6 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    [Authorize]
 
     public class ProductsController : Controller
     {
@@ -51,6 +50,7 @@
             return View(product);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Products/Create
         public IActionResult Create()
         {
@@ -111,7 +111,7 @@
         }
 
 
-
+        [Authorize(Roles = "Admin")]
         // GET: Products/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -195,6 +195,7 @@
             return View(view);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Products/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
