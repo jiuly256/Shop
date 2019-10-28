@@ -3,6 +3,7 @@
     using Data;
     using Data.Entities;
     using Helpers;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using Shop.Web.Models;
@@ -10,6 +11,8 @@
     using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
+
+    [Authorize]
 
     public class ProductsController : Controller
     {
