@@ -32,7 +32,7 @@
             return View(this.productRepository.GetAll().OrderBy(p => p.Name));
         }
 
-       
+
 
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -73,7 +73,7 @@
                     var file = $"{guid}.jpg";
 
                     path = Path.Combine(Directory.GetCurrentDirectory(),
-                        "wwwroot\\images\\Products", 
+                        "wwwroot\\images\\Products",
                         file);
 
                     using (var stream = new FileStream(path, FileMode.Create))
@@ -84,8 +84,7 @@
                     path = $"~/images/Products/{file}";
                 }
 
-                // TODO: Pending to change to: this.User.Identity.Name
-                view.User = await this.userHelper.GetUserByEmailAsync("jiuly256@gmail.com");
+                view.User = await this.userHelper.GetUserByEmailAsync(this.User.Identity.Name);
                 var product = this.ToProduct(view, path);
                 await this.productRepository.CreateAsync(product);
                 return RedirectToAction(nameof(Index));
@@ -176,8 +175,7 @@
                         path = $"~/images/Products/{file}";
                     }
 
-                    // TODO: Pending to change to: this.User.Identity.Name
-                    view.User = await this.userHelper.GetUserByEmailAsync("jiuly256@gmail.com");
+                    view.User = await this.userHelper.GetUserByEmailAsync(this.User.Identity.Name);
                     var product = this.ToProduct(view, path);
                     await this.productRepository.UpdateAsync(product);
                 }
